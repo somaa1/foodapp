@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: ManagerColors.transparent,
       ),
       backgroundColor: ManagerColors.grayLight,
-      body: Auth(title: 'Login', titlebottom: 'Don’t have an account ?', subTitlebottom: ' Sign up',),
+      body: Auth(title: 'Login ', titlebottom: 'Don’t have an account ?', subTitlebottom: ' Sign up',),
     );
   }
 }
