@@ -1,17 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:foodapp/core/widgets/primry_button.dart';
+import 'package:foodapp/core/widgets/prumary_text.dart';
 
-import '../resources/manager_assets.dart';
-import '../resources/manager_colors.dart';
+import '../../../../core/resources/manager_assets.dart';
+import '../../../../core/resources/manager_colors.dart';
 
 class Auth extends StatelessWidget {
   Auth(
       {super.key,
+      required this.icon1,
+        required this.icon2,
+this.image= ManagerAssets.auth1,
+        required this.textfiled1,
+      required this.textfiled2,
+      required this.titleup,
+      required this.subTitleup,
       required this.title,
       required this.titlebottom,
-      required this.subTitlebottom});
+      required this.subTitlebottom,
+      required this.onPressed,
+      required this.onPressedUnderBottom});
 
+  final String titleup;
+  final String subTitleup;
   final String title;
+  final String image;
+
+  final Icon icon1;
+  final Icon icon2;
+
+  final String textfiled1;
+  final String textfiled2;
+
+  void Function() onPressed;
+  void Function() onPressedUnderBottom;
 
   final String titlebottom;
   final String subTitlebottom;
@@ -26,7 +49,7 @@ class Auth extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Image.asset(
-              ManagerAssets.auth1,
+              image,
               fit: BoxFit.cover,
             ),
           ),
@@ -49,7 +72,7 @@ class Auth extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            'Welcome back !',
+                            titleup,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 25,
@@ -59,7 +82,7 @@ class Auth extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            'Sign in to your account',
+                            subTitleup,
                             style: TextStyle(
                               color: Color(0xFF868889),
                               fontSize: 15,
@@ -71,63 +94,11 @@ class Auth extends StatelessWidget {
                         ],
                       ),
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: ManagerColors.grayLight,
-                            width: 1,
-                          ),
-                        ),
-                        hintText: 'Email',
-                        prefixIcon: Icon(Icons.email_outlined),
-                      ),
-                    ),
+                    PrimraryText(icon: icon1, text: textfiled1),
                     SizedBox(height: 20),
-                    TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: ManagerColors.grayLight,
-                            width: 1,
-                          ),
-                        ),
-                        hintText: 'Password',
-                        prefixIcon: Icon(Icons.lock_outline),
-                      ),
-                    ),
+                    PrimraryText(icon: icon2, text: textfiled2),
                     SizedBox(height: 20),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 380,
-                        height: 60,
-                        decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          colors: [
-                            Color(0xFFAEDC81),
-                            Color(0xFF6CC51D),
-                          ],
-                        )),
-                        child: Container(
-                            alignment: AlignmentDirectional.center,
-                            child: Text(
-                              title!,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                              ),
-                            )),
-                      ),
-                    ),
+                    PrimraryButton(onPressed: onPressed, title: title),
                     SizedBox(
                       height: 20,
                     ),
@@ -144,14 +115,17 @@ class Auth extends StatelessWidget {
                             letterSpacing: 0.45,
                           ),
                         ),
-                        Text(subTitlebottom!,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 0.45,
-                            ))
+                        GestureDetector(
+                          onTap: onPressedUnderBottom,
+                          child: Text(subTitlebottom!,
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 15,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 0.45,
+                              )),
+                        )
                       ],
                     )
                   ],
