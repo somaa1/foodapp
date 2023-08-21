@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodapp/core/resources/manager_width.dart';
 import '../../../../core/resources/manager_assets.dart';
 import '../../../../core/resources/manager_colors.dart';
 import '../../../../core/resources/manager_font_sizes.dart';
@@ -26,36 +27,38 @@ class OutBoardingContent extends StatelessWidget {
         children: [
           Image.asset(
             image,
-            height: ManagerHeight.h220,
+            height: ManagerHeight.h380,
+            width: ManagerWidth.w380,
           ),
           const SizedBox(
-            height: ManagerHeight.h90,
+            height: ManagerHeight.h100,
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: ManagerFontSizes.s26,
-              fontWeight: ManagerFontWeight.bold,
-              color: ManagerColors.outBoardingTitleColor,
+              color: Colors.black,
+              fontSize: 25,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.75,
             ),
           ),
           const SizedBox(
-            height: ManagerHeight.h40,
+            height: ManagerHeight.h12,
           ),
           SizedBox(
-            height: ManagerHeight.h100,
+            height: ManagerHeight.h50,
             child: Text(
               subTitle,
               style: TextStyle(
-                fontSize: ManagerFontSizes.s18,
-                fontWeight: ManagerFontWeight.regular,
-                color: ManagerColors.outBoardingTitleColor,
+                color: Color(0xFF868889),
+                fontSize: 15,
               ),
               textAlign: TextAlign.center,
             ),
           ),
           const SizedBox(
-            height: ManagerHeight.h40,
+            height: ManagerHeight.h12,
           ),
         ],
       ),

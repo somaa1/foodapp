@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    ManagerAssets.splash3,
+                    ManagerAssets.logo,
                   ),
                   const SizedBox(height: ManagerHeight.h12),
                   const Text(

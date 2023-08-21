@@ -59,49 +59,49 @@ class _OutBoardingScreenState extends State<OutBoardingScreen> {
         backgroundColor: ManagerColors.transparent,
         elevation: Constants.appBarElevation,
         actions: [
-          Container(
-            width: ManagerWidth.w100,
-            height: ManagerHeight.h40,
-            margin: const EdgeInsetsDirectional.only(
-              end: ManagerWidth.w12,
-            ),
-            child: Visibility(
-              visible: isNotLastPage(),
-              replacement: BaseButton(
-                width: ManagerWidth.w10,
-                height: ManagerHeight.h10,
-                title: ManagerStrings.start,
-                textStyle: TextStyle(
-                  color: ManagerColors.black,
-                  fontSize: ManagerFontSizes.s16,
-                ),
-                isVisibleIcon: false,
-                bgColor: ManagerColors.transparent,
-                elevation: Constants.elevationZero,
-                onPressed: () {},
-              ),
-              child: BaseButton(
-                width: ManagerWidth.w10,
-                height: ManagerHeight.h10,
-                title: ManagerStrings.next,
-                textStyle: TextStyle(
-                  color: ManagerColors.black,
-                  fontSize: ManagerFontSizes.s16,
-                ),
-                isVisibleIcon: false,
-                bgColor: ManagerColors.transparent,
-                elevation: Constants.elevationZero,
-                onPressed: () {
-                  _pageController.nextPage(
-                    duration: const Duration(
-                      milliseconds: Constants.pageViewSliderDuration,
-                    ),
-                    curve: Curves.easeIn,
-                  );
-                },
-              ),
-            ),
-          ),
+          // Container(
+          //   width: ManagerWidth.w100,
+          //   height: ManagerHeight.h40,
+          //   margin: const EdgeInsetsDirectional.only(
+          //     end: ManagerWidth.w12,
+          //   ),
+          //   child: Visibility(
+          //     visible: isNotLastPage(),
+          //     replacement: BaseButton(
+          //       width: ManagerWidth.w10,
+          //       height: ManagerHeight.h10,
+          //       title: ManagerStrings.start,
+          //       textStyle: TextStyle(
+          //         color: ManagerColors.black,
+          //         fontSize: ManagerFontSizes.s16,
+          //       ),
+          //       isVisibleIcon: false,
+          //       bgColor: ManagerColors.transparent,
+          //       elevation: Constants.elevationZero,
+          //       onPressed: () {},
+          //     ),
+          //     child: BaseButton(
+          //       width: ManagerWidth.w10,
+          //       height: ManagerHeight.h10,
+          //       title: ManagerStrings.next,
+          //       textStyle: TextStyle(
+          //         color: ManagerColors.black,
+          //         fontSize: ManagerFontSizes.s16,
+          //       ),
+          //       isVisibleIcon: false,
+          //       bgColor: ManagerColors.transparent,
+          //       elevation: Constants.elevationZero,
+          //       onPressed: () {
+          //         _pageController.nextPage(
+          //           duration: const Duration(
+          //             milliseconds: Constants.pageViewSliderDuration,
+          //           ),
+          //           curve: Curves.easeIn,
+          //         );
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       ),
       body: Container(
@@ -135,82 +135,95 @@ class _OutBoardingScreenState extends State<OutBoardingScreen> {
                     subTitle: ManagerStrings.outBoardingSubTitle2,
                   ),
                   OutBoardingContent(
-                    image: ManagerAssets.outBoarding3,
+                    image: ManagerAssets.outBoarding33,
                     title: ManagerStrings.outBoardingTitle3,
                     subTitle: ManagerStrings.outBoardingSubTitle3,
                   ),
-                  OutBoardingContent(
-                    image: ManagerAssets.outBoarding4,
-                    title: ManagerStrings.outBoardingTitle4,
-                    subTitle: ManagerStrings.outBoardingSubTitle4,
-                  ),
+
                 ],
               ),
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                progressIndicator(
+                Visibility(
+                  visible: isNotLastPage(),
+
+                  child: GestureDetector(
+                    onTap: (){
+                      _pageController.animateToPage(
+                        Constants.outBoardingLastPage,
+                        duration: const Duration(milliseconds: 100),
+                        curve: Curves.fastLinearToSlowEaseIn,
+                      );
+                    },
+                    child: Text(ManagerStrings.skip,
+                        style: TextStyle(
+                          color: Color(0xFFC4C4C4),
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                        ),),
+                  ),
+
+                ),
+                Row(children: [      progressIndicator(
                   color: isFirstPage()
-                      ? ManagerColors.gray
+                      ? ManagerColors.green
                       : ManagerColors.progressIndicatorColor,
-                  width: isFirstPage() ? ManagerWidth.w20 : ManagerWidth.w8,
+                  width: isFirstPage() ?  ManagerWidth.w8 : ManagerWidth.w8,
                 ),
-                progressIndicator(
-                  color: isSecondPage()
-                      ? ManagerColors.gray
-                      : ManagerColors.progressIndicatorColor,
-                  width: isSecondPage() ? ManagerWidth.w20 : ManagerWidth.w8,
+                  progressIndicator(
+                    color: isSecondPage()
+                        ? ManagerColors.green
+                        : ManagerColors.progressIndicatorColor,
+                    width: isSecondPage() ? ManagerWidth.w8 : ManagerWidth.w8,
+                  ),
+                  progressIndicator(
+                    color: isLastPage()
+                        ? ManagerColors.green
+                        : ManagerColors.progressIndicatorColor,
+                    width: isLastPage() ? ManagerWidth.w8 : ManagerWidth.w8,
+                  ),
+
+
+                ],),
+                Visibility(
+                  visible: isNotLastPage(),
+                  child: GestureDetector(
+                    onTap: (){
+                      _pageController.nextPage(
+                          duration: const Duration(
+                          milliseconds: Constants.pageViewSliderDuration), curve: Curves.easeIn);},
+                    
+                    child: Text(ManagerStrings.next,style: TextStyle(
+                      color: Color(0xFF6CC51D),
+                      fontSize: 15,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),),
+                  ),
+                  replacement:   GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, Routes.loginView);
+                    },
+                    child: Text(ManagerStrings.start,style: TextStyle(
+                      color: Color(0xFF6CC51D),
+                      fontSize: 15,
+                      fontFamily: 'Poppins',
+                      fontWeight: FontWeight.w500,
+                    ),),
+                  ),
                 ),
-                progressIndicator(
-                  color: isThirdPage()
-                      ? ManagerColors.gray
-                      : ManagerColors.progressIndicatorColor,
-                  width: isThirdPage() ? ManagerWidth.w20 : ManagerWidth.w8,
-                ),
-                progressIndicator(
-                  color: isLastPage()
-                      ? ManagerColors.gray
-                      : ManagerColors.progressIndicatorColor,
-                  width: isLastPage() ? ManagerWidth.w20 : ManagerWidth.w8,
-                ),
+
+
+
               ],
             ),
             const SizedBox(height: ManagerHeight.h40),
             Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: ManagerWidth.w40,
-              ),
-              child: Visibility(
-                visible: isLastPage(),
-                replacement: BaseButton(
-                  isVisibleIcon: true,
-                  textStyle: TextStyle(
-                    fontSize: ManagerFontSizes.s16,
-                    fontWeight: ManagerFontWeight.regular,
-                    color: ManagerColors.white,
-                  ),
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      Constants.outBoardingLastPage,
-                      duration: const Duration(milliseconds: 100),
-                      curve: Curves.fastLinearToSlowEaseIn,
-                    );
-                  },
-                  title: ManagerStrings.skip,
-                ),
-                child: BaseButton(
-                  isVisibleIcon: true,
-                  textStyle: TextStyle(
-                    fontSize: ManagerFontSizes.s16,
-                    fontWeight: ManagerFontWeight.regular,
-                    color: ManagerColors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, Routes.authenticationView);
-                  },
-                ),
               ),
             ),
           ],
@@ -231,9 +244,7 @@ class _OutBoardingScreenState extends State<OutBoardingScreen> {
     return _currentPageIndex == 1;
   }
 
-  bool isThirdPage() {
-    return _currentPageIndex == 2;
-  }
+
 
   bool isLastPage() {
     return _currentPageIndex == Constants.outBoardingLastPage;
