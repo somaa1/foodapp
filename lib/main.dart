@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'core/routes.dart';
 import 'features/home/presentation/view/Login_Page.dart';
+import 'features/home/presentation/view/Regiester_Page.dart';
 import 'features/out_boarding/presentation/view/out_boarding_screen.dart';
 import 'features/splash/presentation/view/splash_screen.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         Routes.outBoardingScreen: (context) => const OutBoardingScreen(),
         // Routes.authenticationView: (context) => const AuthenticationView(),
         Routes.loginView: (context) =>  LoginPage(),
-        // Routes.registerView: (context) => const RegisterView(),
+        Routes.registerView: (context) => const RegiesterPage(),
        //  Routes.homeView: (context) => const HomeView(),
       },
     );
