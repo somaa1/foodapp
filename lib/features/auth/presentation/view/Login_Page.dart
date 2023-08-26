@@ -36,11 +36,25 @@ class LoginPage extends StatelessWidget {
         backgroundColor: ManagerColors.transparent,
       ),
       backgroundColor: ManagerColors.grayLight,
-      body: Auth(title: 'Login ', titlebottom: 'Don’t have an account ?', subTitlebottom: ' Sign up', onPressed: () {
+      body: Auth(
+        title: 'Login ',
+        titlebottom: 'Don’t have an account ?',
+        subTitlebottom: ' Sign up',
+        onPressedButton: () {
+          Get.back();
+          Get.offAllNamed(Routes.homeView);
 
-      }, onPressedUnderBottom: () {
-Get.off( RegiesterPage());
-      }, titleup: 'Welcome back !', subTitleup: 'Sign in to your account', icon1: Icon(Icons.email_outlined), icon2: Icon(Icons.phone_outlined), textfiled1: 'Phone number', textfiled2: 'Password',),
+        },
+        onPressedUnderBottom: () {
+          Get.off(RegiesterPage());
+        },
+        titleup: 'Welcome back !',
+        subTitleup: 'Sign in to your account',
+        icon1: Icon(Icons.email_outlined),
+        icon2: Icon(Icons.phone_outlined),
+        textfiled1: 'Phone number',
+        textfiled2: 'Password',
+      ),
     );
   }
 }
