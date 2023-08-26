@@ -19,7 +19,7 @@ this.image= ManagerAssets.auth1,
       required this.title,
       required this.titlebottom,
       required this.subTitlebottom,
-      required this.onPressed,
+      required this.onPressedButton,
       required this.onPressedUnderBottom});
 
   final String titleup;
@@ -33,7 +33,7 @@ this.image= ManagerAssets.auth1,
   final String textfiled1;
   final String textfiled2;
 
-  void Function() onPressed;
+  void Function() onPressedButton;
   void Function() onPressedUnderBottom;
 
   final String titlebottom;
@@ -98,7 +98,7 @@ this.image= ManagerAssets.auth1,
                     SizedBox(height: 20),
                     PrimraryText(icon: icon2, text: textfiled2),
                     SizedBox(height: 20),
-                    PrimraryButton(onPressed: onPressed, title: title),
+                    PrimraryButton(onPressed: onPressedButton, title: title),
                     SizedBox(
                       height: 20,
                     ),
