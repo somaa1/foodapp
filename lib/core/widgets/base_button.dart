@@ -1,37 +1,39 @@
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
+import '../constants.dart';
 import '../resources/manager_colors.dart';
 import '../resources/manager_font_sizes.dart';
 import '../resources/manager_font_weight.dart';
 import '../resources/manager_height.dart';
 import '../resources/manager_strings.dart';
+import '../resources/manager_text_styles.dart';
 import '../resources/manager_width.dart';
 
-
 class BaseButton extends StatelessWidget {
-  final String title;
+  final int? spacerFlex;
+  final String? title;
   final bool isVisibleIcon;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final Color bgColor;
   final double elevation;
   void Function() onPressed;
 
-  TextStyle? textStyle = TextStyle(
+  TextStyle? textStyle = getRegularTextStyle(
     fontSize: ManagerFontSizes.s16,
-    fontWeight: ManagerFontWeight.regular,
     color: ManagerColors.white,
   );
 
   BaseButton({
     super.key,
-    this.title = ManagerStrings.start,
-    this.isVisibleIcon = false,
-    this.width = ManagerWidth.w64,
-    this.height = ManagerHeight.h50,
+    this.title,
+    this.isVisibleIcon = Constants.baseButtonVisibleIcon,
+    this.width,
+    this.height,
     this.bgColor = ManagerColors.primaryColor,
     this.textStyle,
-    this.elevation = 2,
+    this.elevation = Constants.baseButtonElevation,
+    this.spacerFlex,
     required this.onPressed,
   });
 
@@ -43,22 +45,22 @@ class BaseButton extends StatelessWidget {
         elevation: elevation,
         backgroundColor: bgColor,
         minimumSize: Size(
-          width,
-          height,
+          width ?? ManagerWidth.w64,
+          height ?? ManagerHeight.h50,
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Spacer(
-            flex: 5,
+          Spacer(
+            flex: spacerFlex ?? Constants.baseButtonFirstSpacerFlex,
           ),
           Text(
-            title,
+            title ?? ManagerStrings.start,
             style: textStyle,
           ),
-          const Spacer(
-            flex: 4,
+          Spacer(
+            flex: spacerFlex ?? Constants.baseButtonSecondSpacerFlex,
           ),
           Visibility(
             visible: isVisibleIcon,
@@ -66,7 +68,7 @@ class BaseButton extends StatelessWidget {
               Icons.arrow_forward,
               color: ManagerColors.white,
             ),
-          )
+          ),
         ],
       ),
     );
