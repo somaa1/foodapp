@@ -1,8 +1,11 @@
+
 class ManagerRadius {
-  static const double r2 = 2;
-  static const double r4 = 4;
-  static const double r6 = 6;
-  static const double r8 = 8;
-  static const double r10 = 10;
-  static const double r12 = 12;
+  static double r2 = SizeUtil.setRadius(2);
+  static double r4 = SizeUtil.setRadius(4);
+  static double r6 = SizeUtil.setRadius(6);
+  static double r8 = SizeUtil.setRadius(8);
+  static double r10 = SizeUtil.setRadius(10);
+  static double r12 = SizeUtil.setRadius(12);
+  static double r16 = SizeUtil.setRadius(16);
+  static double r100 = SizeUtil.setRadius(100);
 }
