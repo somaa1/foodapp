@@ -14,3 +14,21 @@ class Constants {
   static const double dividerIndentDefault = 1;
   static const double dividerEndIndentDefault = 1;
 }
+class KeyConstants {
+  static const String outBoardingViewedKey = 'out_boarding_viewed';
+  static const String localeKey = 'locale_key';
+  static const String arabic = 'ar';
+  static const String english = 'en';
+  static const String arabicName = 'العربية';
+  static const String englishName = 'English';
+  static const String token = 'token';
+  static const String loggedIn = 'logged_in';
+  static const String user = 'user_';
+  static const String userId = '${user}id';
+  static const String userType = '${user}type';
+  static const String userName = '${user}name';
+  static const String userEmail = '${user}email';
+  static const String userAvatar = '${user}avatar';
+  static const String userAvatarOriginal = '${user}avatar_original';
+  static const String userPhone = '${user}phone';
+}
