@@ -1,4 +1,6 @@
 
+import '../utils/size_util.dart';
+
 class ManagerRadius {
   static double r2 = SizeUtil.setRadius(2);
   static double r4 = SizeUtil.setRadius(4);
