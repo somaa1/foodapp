@@ -8,5 +8,7 @@ class SharedPreferencesSetting{
   factory SharedPreferencesSetting() {
     return _instance;
   }
-
+  Future<void> initPreferences() async{
+    _sharedPreferences= await SharedPreferences.getInstance();
+  }
 }
