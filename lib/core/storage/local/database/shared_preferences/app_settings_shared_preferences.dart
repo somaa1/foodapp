@@ -28,4 +28,21 @@ class SharedPreferencesSetting{
 
   bool get loggedIn =>
       _sharedPreferences.getBool(KeyConstants.loggedIn).onNull();
+
+
+
+  Future<void> setDefaultLocale(String lang) async {
+    await _sharedPreferences.setString(KeyConstants.localeKey, lang);
+  }
+
+  String get defaultLocale =>
+      _sharedPreferences.getString(KeyConstants.localeKey).parseLocale();
+
+
+
+
+
+
+
 }
+
